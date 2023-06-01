@@ -1,15 +1,25 @@
 {
-  "name": "studiocapilarwebsite",
+  "name": "studio-capilar",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aureliu555/studio-capilar.git"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "hbs": "^4.2.0"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2"
-  }
+  "bugs": {
+    "url": "https://github.com/Aureliu555/studio-capilar/issues"
+  },
+  "homepage": "https://github.com/Aureliu555/studio-capilar#readme"
 }
