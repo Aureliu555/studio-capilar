@@ -1,0 +1,24 @@
+{
+    "professionals": [
+        {
+            "name": "Jhone Barbeiro",
+            "info": "Formador de novos barbeiros",
+            "imgName": "JhoneBarbeiro.png"
+        },
+        {
+            "name": "Bruno Gonçalves",
+            "info": "Barbeiro",
+            "imgName": "BrunoGoncalves.png"
+        },
+        {
+            "name": "Jennifer Marques",
+            "info": "Cabelereira e Estética",
+            "imgName": "JenniferMarques.png"
+        },
+        {
+            "name": "B. Pássaro",
+            "info": "Barbeiro",
+            "imgName": "BPassaro.png"
+        }
+    ]
+}

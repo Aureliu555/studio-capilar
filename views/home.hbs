@@ -1,10 +1,16 @@
-<h1>Profissionais</h1>
-<div class="container-card">
-    <div class="card-of-professional">
-        <div class="front" style="background-image: url(/imgs/Me.png)"></div>
-        <div class="back">
-            <h5> Jhonne Barbeiro </h5>
-            <p class="card-text"> Formador de novos barbeiros</p>
+<h1 style="margin-top: 6rem ; font-style:oblique">Profissionais</h1>
+<span class="cards-block">
+{{#each professionals}}
+    <div class="container-card">
+        <div class="card-of-professional">
+            <div class="front">
+                <img class="card-img" src="/imgs/{{imgName}}">
+            </div>
+            <div class="back">
+                <h5> {{name}} </h5>
+                <p class="card-text"> {{info}} </p>
+            </div>
         </div>
     </div>
-</div>
+{{/each}}
+</span>
