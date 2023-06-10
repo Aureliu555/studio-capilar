@@ -1,13 +1,6 @@
-.container-home-page {
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-}
-
 .container-cards {
     width: 60%;
     margin-left: 20%;
-    margin-top: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: center;
