@@ -11,6 +11,7 @@
     "url": "git+https://github.com/Aureliu555/studio-capilar.git"
   },
   "dependencies": {
+    "bootstrap-icons": "^1.10.5",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.7",
     "hbs": "^4.2.0"

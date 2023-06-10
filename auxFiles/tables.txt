@@ -1,0 +1,9 @@
+user - name
+	 - id
+	 - email
+	 - pass
+	 - status (cliente / aluno / dono / trabalhador)
+
+schedule - service
+		 - data
+		 - userID

@@ -1,10 +1,10 @@
 {
-    "professionals": [
-        {
-            "name": "Jhone Barbeiro",
-            "info": "Formador de novos barbeiros",
-            "imgName": "JhoneBarbeiro.png"
-        },
+    "owner": {
+        "name": "Jhone Barbeiro",
+        "info": "Formador de novos barbeiros",
+        "imgName": "JhoneBarbeiro.png"
+    },
+    "workers": [
         {
             "name": "Bruno Gonçalves",
             "info": "Barbeiro",
