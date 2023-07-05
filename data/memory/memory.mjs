@@ -3,11 +3,20 @@ import fs from 'node:fs/promises'
 export default function dataFunctions() {
 
     async function getProfessionals() {
-        const data = await fs.readFile("data/professionals.json")
+        return await getData("data/professionals.json")
+    }
+
+    async function getServices() {
+        return await getData("data/services.json")
+    }
+
+    async function getData(path) {
+        const data = await fs.readFile(path)
         return JSON.parse(data)
     }
     
     return {
-        getProfessionals
+        getProfessionals,
+        getServices
     }
 }

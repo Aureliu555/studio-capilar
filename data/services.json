@@ -4,42 +4,42 @@
             "name": "Corte Degradê",
             "duration": 45,
             "price": 13,
-            "descriptin": "",
+            "description": "",
             "promotion": 20 
         },
         {
             "name": "Corte Clássico",
             "duration": 40,
             "price": 12,
-            "descriptin": "",
+            "description": "",
             "promotion": null
         },
         {
             "name": "Cabelo e Barba",
             "duration": 60,
             "price": 22,
-            "descriptin": "Independente do corte, sendo a máquina ou tesoura, criança ou Adulto, o valor é igual",
+            "description": "Independente do corte, sendo a máquina ou tesoura, criança ou Adulto, o valor é igual",
             "promotion": null
         },
         {
             "name": "Cabelo e Sobrencelhas",
             "duration": 55,
             "price": 18,
-            "descriptin": "",
+            "description": "",
             "promotion": null
         },
         {
             "name": "Barba e acabamento do cabelo",
             "duration": 35,
             "price": 20,
-            "descriptin": "Só para homens",
+            "description": "Só para homens",
             "promotion": 20
         },
         {
             "name": "Manicure e Pedicure simples",
             "duration": 80,
             "price": 22,
-            "descriptin": "Só para mulheres",
+            "description": "Só para mulheres",
             "promotion": 12
         }
     ]

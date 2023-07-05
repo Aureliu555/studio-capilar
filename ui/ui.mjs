@@ -7,19 +7,13 @@ export default function uiFunctions(services) {
         resp.render("home", {"owner": professionals.owner, "workers": professionals.workers})
     }
 
-    async function getServices(req, resp) {
-        const data = await fs.readFile("./data/professionals.json")
-        const jsonData = JSON.parse(data)
-        resp.render("home", {"professionals": jsonData.professionals})
-    }
-
     async function schedulesPage(req, resp) {
-        resp.render("schedules")
+        const schedules = await services.getServices()
+        resp.render("schedules", {"schedules": schedules})
     }
     
     return {
         homePage,
-        getServices,
         schedulesPage
     }
 }

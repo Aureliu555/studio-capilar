@@ -1,16 +1,14 @@
 .container-cards {
-    width: 60%;
-    margin-left: 20%;
+    width: 80%;
+    margin-left: 10%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    align-items: center;
-    gap: 20px;
-    justify-content: center;
+    gap: 80px;
 }
 
 .container-card {
-    width: 227px;
-    height: 320px;
+    width: 350px;
+    height: 500px;
 }
 
 .professional-card {
@@ -59,10 +57,17 @@
     .container-cards {
         grid-template-columns: 1fr 1fr;
     }
+
+    .mobile-nav {
+        width: 50%;
+    }
 }
 
 @media (min-width: 1025px) {
     .container-cards {
+        width: 90%;
+        margin-left: 5%;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
+    
 }
