@@ -4,19 +4,6 @@
     gap: 80px;
 }
 
-.hrefs-desktop {
-    justify-content: end;
-}
-
-.hrefs-desktop a {
-    width: fit-content;
-}
-
-.navbar-container {
-    position: fixed;
-    z-index: 100;
-}
-
 #brand {
     color: #1723a4;
 }
@@ -24,16 +11,6 @@
 #brand-img {
     width: 200px;
     height: 50px;
-}
-
-.navbar-nav {
-    right: 0;
-}
-
-#nav-item-sc {
-    color: #ffffff;
-    margin-right: 10px;
-    text-decoration: none;
 }
 
 .col {
@@ -46,40 +23,6 @@
     flex-direction: row;
 }
 
-.nav {
-    width: 100%;
-    height: 10vh;
-    position: fixed;
-    background-color: #010001;
-    padding: 15px;
-    z-index: 100;
-}
-
-.nav-link {
-    transition: all 0.2s;
-    position: relative;
-}
-
-.nav-link::after {
-    content: '';
-    opacity: 0;
-    transition: all 0.2s;
-    height: 2px;
-    width: 100%;
-    background-color: greenyellow;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-.nav-link:hover::after {
-    opacity: 1;
-}
-
-.nav-item-rsp {
-    font-size: 100%;
-}
-
 body {
     background-color: #212020;
     color: #ffffff;
@@ -90,16 +33,6 @@ body {
     margin-bottom: 5%;
     margin-left: 25%;
     max-width: 50%;
-}
-
-.row-owner {
-    margin-top: 5%; 
-    margin-bottom: 5%; 
-    justify-content:center
-}
-
-.row-of-professionals {
-    height: 22rem
 }
 
 .location-container {
@@ -137,17 +70,8 @@ h1,p {
     height: 4px;
 }
 
-@media (max-width: 1024px) {
-    .hrefs-desktop {
-        display: none;
-    }
-}
 
 @media (min-height: 1081px) {
-    .nav-item-rsp {
-        font-size: 30px;
-    }
-
     #brand-img {
         width: 300px;
         height: 75px;

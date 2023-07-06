@@ -1,14 +1,13 @@
 .container-cards {
-    width: 80%;
-    margin-left: 10%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 80px;
+    place-content: center;
+    column-gap: 50px;
+    row-gap: 80px;
 }
 
 .container-card {
-    width: 350px;
-    height: 500px;
+    width: 270px;
+    height: 350px;
 }
 
 .professional-card {
@@ -53,9 +52,19 @@
     color: white;
 }
 
+.row-owner {
+    margin-top: 5%; 
+    margin-bottom: 5%; 
+    justify-content:center
+}
+
+.row-of-professionals {
+    height: 22rem
+}
+
 @media (max-width: 1024px) {
     .container-cards {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 270px 270px;
     }
 
     .mobile-nav {
@@ -65,9 +74,6 @@
 
 @media (min-width: 1025px) {
     .container-cards {
-        width: 90%;
-        margin-left: 5%;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 270px 270px 270px 270px;
     }
-    
 }

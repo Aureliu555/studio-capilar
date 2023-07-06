@@ -74,6 +74,37 @@
     background-color: rgb(61, 61, 90);
 }
 
+.navbar-container {
+    position: fixed;
+    z-index: 100;
+}
+
+.hrefs-mobile {
+    margin-top: 15px;
+}
+
+.hrefs-desktop {
+    margin-top: 25px;
+    justify-content: end;
+}
+
+.hrefs-desktop a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    width: fit-content;
+}
+    
+.hrefs-desktop a:hover {
+    color: blue;
+}
+
+@media (max-width: 1024px) {
+    .hrefs-desktop {
+        display: none;
+    }
+}
+
 @media (min-width: 1025px) {
     .hrefs-mobile {
         display: none;
