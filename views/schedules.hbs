@@ -1,22 +1,24 @@
-{{#each schedules.trending}}
-    <div class="col" style="border:1px">
-        <div class="row">
-            <div class="col">
-                <div class="row">
-                    {{name}}
+<div class="col" style="margin-top: 100px">
+    {{#each schedules.trending}}
+        <div class="row" style="border:1px; margin-left: 10px">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        {{name}}
+                    </div>
+                    <div class="row">
+                        {{duration}}
+                    </div>
                 </div>
-                <div class="row">
-                    {{duration}}
+                <div class="col">
+                    <div class="row">
+                        {{price}}
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="row">
-                    {{price}}
-                </div>
+            <div class="row">
+                {{description}}
             </div>
         </div>
-        <div class="row">
-            {{description}}
-        </div>
-    </div>
-{{/each}}
+    {{/each}}
+</div>

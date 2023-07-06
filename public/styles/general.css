@@ -4,6 +4,19 @@
     gap: 80px;
 }
 
+.hrefs-desktop {
+    justify-content: end;
+}
+
+.hrefs-desktop a {
+    width: fit-content;
+}
+
+.navbar-container {
+    position: fixed;
+    z-index: 100;
+}
+
 #brand {
     color: #1723a4;
 }
@@ -25,12 +38,12 @@
 
 .col {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .nav {
@@ -122,6 +135,12 @@ h1,p {
     border: none;
     background-color: orange;
     height: 4px;
+}
+
+@media (max-width: 1024px) {
+    .hrefs-desktop {
+        display: none;
+    }
 }
 
 @media (min-height: 1081px) {

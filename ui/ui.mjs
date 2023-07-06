@@ -1,5 +1,3 @@
-import fs from 'node:fs/promises'
-
 export default function uiFunctions(services) {
 
     async function homePage(req, resp) {
