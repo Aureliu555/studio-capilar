@@ -1,3 +1,13 @@
+.brand-img-container {
+    margin-top: 10px; 
+    margin-left: 100px;
+}
+
+.brand-img {
+    width: 200px;
+    height: 50px;
+}
+
 .hamburger {
     margin-top: 20px;
     margin-left: 20px;
@@ -80,11 +90,14 @@
 }
 
 .hrefs-mobile {
+    margin-right: 100px;
     margin-top: 15px;
 }
 
 .hrefs-desktop {
+    height: 60px;
     margin-top: 25px;
+    margin-right: 100px;
     justify-content: end;
 }
 
@@ -96,12 +109,22 @@
 }
     
 .hrefs-desktop a:hover {
-    color: blue;
+    color: rgb(255, 174, 24);
+    margin-top: -10px;
+    transition: 0.4s;
 }
 
 @media (max-width: 1024px) {
     .hrefs-desktop {
         display: none;
+    }
+
+    .hrefs-mobile {
+        margin-right: 50px;
+    }
+
+    .brand-img-container {
+        margin-left: 50px;
     }
 }
 

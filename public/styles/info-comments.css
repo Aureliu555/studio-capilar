@@ -1,0 +1,125 @@
+.info-comments-brand {
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.info-comments-brand img {
+    width: 400px;
+    height: 100px;
+}
+
+.info-comments-contacts {
+    align-items: center;
+}
+
+.info-comments-contacts .row {
+    justify-content: center;
+}
+
+.info-day-hours {
+    justify-content: center;
+}
+
+.info-day-hours hr {
+    width: 55%;
+    margin-top: 10px;
+}
+
+.info-day-hours span {
+    font-size: 14px;
+}
+
+.info-day-text {
+    margin-right: 15%;
+    width: fit-content;
+}
+
+.info-hours-text {
+    margin-left: 15%;
+    width: fit-content;
+}
+
+.info-comments-text {
+    flex: 4;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.info-comments-separation {
+    width: 40%;
+    margin-left: 5%;
+}
+
+.info-comments-icon {
+    width: fit-content;
+    color: orange;
+}
+
+.info-comments-complaints {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.info-header {
+    color: orange;
+    text-align: center;
+}
+
+.info-comments-form {
+    align-items: center;
+    justify-content: center;
+}
+
+.info-comments-form form {
+    width: 90%;
+    max-width: 600px;
+    justify-content: center;
+}
+
+.input-group {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.input-group input, .input-group textarea{
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    border: 1px solid #fff;
+    color: #fff;
+    background: transparent;
+    font-size: 15px;
+}
+
+.input-group label {
+    padding-bottom: 5px;
+}
+
+.info-comments-form form button {
+    padding: 10px 0;
+    color: #fff;
+    outline: none;
+    background: transparent;
+    border: 1px solid #fff;
+    width: 100%;
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .info-day-hours hr {
+        width: 70%;
+        margin-top: 10px;
+    }
+
+    .info-comments-separation {
+        width: 80%;
+        margin-left: 10%;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1780px){
+    .info-comments-separation {
+        width: 60%;
+        margin-left: 10%;
+    }
+}
