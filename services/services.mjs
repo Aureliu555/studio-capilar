@@ -7,9 +7,14 @@ export default function servicesFunctions(data) {
     async function getServices() {
         return await data.getServices()
     }
+
+    async function getGallery() {
+        return await data.getGallery()
+    }
     
     return {
         getProfessionals,
-        getServices
+        getServices,
+        getGallery
     }
 }

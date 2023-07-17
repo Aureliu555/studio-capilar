@@ -51,4 +51,26 @@ p {
         height: 100vh;
         object-fit: cover;
     }
+
+    .main-text {
+        position: absolute;
+        left: 50%;
+        margin-left: -500px;
+        top: 40%;
+        margin-top: -250px;
+        background-color: rgba(0, 0, 0, 0.2);
+        width: 1000px;
+        text-align: center;
+    }
+
+    .slogan {
+        font-size: 70px;
+    }
+    
+    .description {
+        width: 800px;
+        font-size: 30px;
+    }
+
+    
 }

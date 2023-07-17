@@ -10,6 +10,10 @@ export default function dataFunctions() {
         return await getData("data/services.json")
     }
 
+    async function getGallery() {
+        return await getData("data/gallery.json")
+    }
+
     async function getData(path) {
         const data = await fs.readFile(path)
         return JSON.parse(data)
@@ -17,6 +21,7 @@ export default function dataFunctions() {
     
     return {
         getProfessionals,
-        getServices
+        getServices,
+        getGallery
     }
 }

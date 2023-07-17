@@ -14,7 +14,7 @@
 .container-home-page {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 50px;
 }
 
 .col {
@@ -65,12 +65,4 @@ h1,p {
     border: none;
     background-color: orange;
     height: 4px;
-}
-
-
-@media (min-height: 1081px) {
-    #brand-img {
-        width: 300px;
-        height: 75px;
-    }
 }

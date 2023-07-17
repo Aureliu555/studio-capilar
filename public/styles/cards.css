@@ -5,11 +5,6 @@
     row-gap: 80px;
 }
 
-.container-card {
-    width: 270px;
-    height: 350px;
-}
-
 .professional-card {
     transition: transform 1500ms;
     transform-style: preserve-3d;
@@ -52,19 +47,9 @@
     color: white;
 }
 
-.row-owner {
-    margin-top: 5%; 
-    margin-bottom: 5%; 
-    justify-content:center
-}
-
-.row-of-professionals {
-    height: 22rem
-}
-
 @media (max-width: 1024px) {
     .container-cards {
-        grid-template-columns: 270px 270px;
+        grid-template-columns: 250px 250px 250px;
     }
 
     .mobile-nav {

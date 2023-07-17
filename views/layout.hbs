@@ -9,8 +9,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
         <link rel="stylesheet" href="styles/general.css">
-        <link rel="stylesheet" href="styles/cards.css">
-        <link rel="stylesheet" href="styles/background-img.css">
         <link rel="stylesheet" href="styles/navbar.css">
 
         <script src="scripts/main.js"></script>
@@ -20,16 +18,17 @@
     <body>
         <div class="main-content">
             <div class="row" style="align-items:space-between; justify-content: center">
-            <div class="row navbar-container" style="height:80px; background-color: rgba(0, 0, 0, 0.3)">
+            <div class="row navbar-container">
                     <div class="col brand-img-container">
                         <a href="/" style="width:fit-content;"><img class="brand-img" src="./imgs/brand.png"></a>
                     </div>
                     <div class="col" style="flex: 2"> 
                         <nav class="row hrefs-desktop">
-                            <a href="/schedules" > Agendar</a>
+                            <!--<a href="/schedules" > Agendar</a>-->
+                            <a href="https://www.fresha.com/pt/a/studio-capilar-jhone-barbeiro-alcabideche-rua-cesaltina-fialho-gouveia-199-aghw0q3d/booking?menu=true" > Agendar</a>
                             <a href="/#professionls"> Profissionais</a>
                             <a href="/#location"> Localização</a>
-                            <a href="/#who-we-are"> Quem Somos</a>
+                            <a href="/#gallery"> Galeria</a>
                             <a href="/"> LogIn</a>  
                         </nav>
                     </div>
@@ -39,13 +38,50 @@
                                 <div class="bar"></div>
                             </button>
                         </div>
-                        <nav class="mobile-nav">
-                            <a href="/schedules"> Agendar</a>
-                            <a href="/#professionls"> Profissionais</a>
-                            <a href="/#location"> Localização</a>
-                            <a href="/#who-we-are"> Quem Somos</a>
-                            <a href="/"> LogIn</a>
-                        </nav> 
+                        <div class="col mobile-nav">
+                            <div class="row mobile-menu-img">
+                                <img class="mobile-menu-brand-img" src="./imgs/brand.png">
+                            </div> 
+
+                            <div class="row hrefs-mobile-row" style="margin-left: 2px">
+                                <hr>
+                                <!--<a href="/schedules"> Agendar</a>-->
+                                <a href="https://www.fresha.com/pt/a/studio-capilar-jhone-barbeiro-alcabideche-rua-cesaltina-fialho-gouveia-199-aghw0q3d/booking?menu=true" > Agendar</a>
+                                <hr>
+                                <a href="/#professionls"> Profissionais</a>
+                                <hr>
+                                <a href="/#location"> Localização</a>
+                                <hr>
+                                <a href="/#gallery"> Galeria</a>
+                                <hr>
+                                <a href="/"> LogIn</a>
+                                <hr>
+                            </div>
+
+                            <div class="col" style="justify-content:end; margin-left: 15px">
+                                <div class="row" style="padding-bottom:20px">
+                                    <span class="mobile-menu-info-header">CONTACTOS</span> 
+                                </div>
+                                <div class="row">
+                                    <i class="lnr lnr-map-marker mobile-menu-info-icon"></i>
+                                    <a class="mobile-menu-info-text" href="https://www.google.com/maps?ll=38.734563,-9.408831&z=18&t=m&hl=pt-PT&gl=PT&mapclient=embed&q=R.+Cesaltina+Fialho+Gouveia+199+Alcabideche" style="text-decoration: none; color: white;">
+                                        <span style="text-decoration: underline">R. Cesaltina Fialho Gouveia 199, Alcabideche</span>
+                                    </a> 
+                                    <hr>
+                                </div>
+                                <div class="row">
+                                    <i class="lnr lnr-envelope mobile-menu-info-icon"></i>
+                                    <span class="mobile-menu-info-text">studiocapilar@gmail.com</span>
+                                    <hr>
+                                </div>
+                                
+                                <div class="row">
+                                    <i class="lnr lnr-phone-handset mobile-menu-info-icon"></i>
+                                    <span class="mobile-menu-info-text">(+351) 963 286 570</span>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
