@@ -55,6 +55,7 @@ h1,p {
 }
 
 .section-info-text {
+    font-family: "Brush Script MT", cursive;
     margin-left: 20px;
     font-size: 35px;
     color: orange;

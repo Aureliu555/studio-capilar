@@ -24,6 +24,7 @@ app.use(express.static('public'))
 app.get("/api/professionals", api.getProfessionals)
 app.get("/api/schedules", api.getSchedules)
 app.get("/api/gallery", api.getGallery)
+app.get("/api/test", api.getUser)
 
 app.get("/", ui.homePage)
 app.get("/schedules", ui.schedulesPage)

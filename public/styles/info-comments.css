@@ -61,6 +61,8 @@
 }
 
 .info-header {
+    font-family: "Montserrat";
+    font-size: 22px;
     color: orange;
     text-align: center;
 }

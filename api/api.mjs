@@ -1,4 +1,9 @@
 export default function apiFunctions(services) {
+    
+    async function getUser(req, resp) {
+        await services.getUser()
+        resp.json({res: 'OK'})
+    }
 
     async function getProfessionals(req, resp) {
         const professionals = await services.getProfessionals()
@@ -18,6 +23,7 @@ export default function apiFunctions(services) {
     return {
         getProfessionals,
         getSchedules,
-        getGallery
+        getGallery,
+        getUser
     }
 }

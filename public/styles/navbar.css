@@ -84,7 +84,7 @@
 }
 
 .mobile-nav .hrefs-mobile-row a {
-    font-family: "Brush Script MT";
+    font-family: "Brush Script MT", cursive;
     color: orange;
     width: 100%;
     text-decoration: none;
@@ -136,7 +136,8 @@
 
 
 .hrefs-desktop {
-    font-family: "Brush Script MT";
+    /**font-family: "Montserrat";*/
+    font-family: "Brush Script MT", cursive;
     height: 60px;
     margin-top: 25px;
     margin-right: 100px;

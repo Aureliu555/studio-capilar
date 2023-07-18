@@ -1,4 +1,8 @@
 export default function servicesFunctions(data) {
+
+    async function getUser() {
+        return await data.getUser()
+    }
     
     async function getProfessionals() {
         return await data.getProfessionals()
@@ -15,6 +19,7 @@ export default function servicesFunctions(data) {
     return {
         getProfessionals,
         getServices,
-        getGallery
+        getGallery,
+        getUser
     }
 }
