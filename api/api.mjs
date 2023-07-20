@@ -1,4 +1,22 @@
 export default function apiFunctions(services) {
+
+    async function login(req, resp) {
+        const res = await services.login(req.body.email, req.body.password)
+    }
+
+    async function signUp(req, resp) {
+        try {
+            const res = await services.signUp(req.body.name, req.body.email, req.body.password)
+            resp.redirect('/login')
+        } catch {
+            resp.redirect('/signUp')
+        }
+    }
+
+    async function logOut(req, resp) {
+        req.logOut()
+        resp.redirect('/login')
+    }
     
     async function getUser(req, resp) {
         await services.getUser()
@@ -24,6 +42,9 @@ export default function apiFunctions(services) {
         getProfessionals,
         getSchedules,
         getGallery,
-        getUser
+        getUser,
+        login,
+        signUp,
+        logOut
     }
 }

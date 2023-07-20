@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import {MongoClient, ServerApiVersion} from 'mongodb'
+import bcrypt from 'bcrypt'
 
 const MONGO_URI = process.env.MONGO_URI
 
@@ -11,24 +12,35 @@ const client = new MongoClient(MONGO_URI, {
     }
   });
 
+const users = []
+
 export default function dataFunctions() {
 
-    async function run() {
-        try {
-            // Connect the client to the server	(optional starting in v4.7)
-            await client.connect();
-            // Send a ping to confirm a successful connection
-            await client.db("admin").command({ ping: 1 });
-            console.log("Pinged your deployment. You successfully connected to MongoDB!");
-          } finally {
-            // Ensures that the client will close when you finish/error
-            await client.close();
-          }
+    async function getUserByEmail(email) {
+        return users.find(user => user.email === email)
+    }
+
+    async function getUserById(id) {
+        return users.find(user => user.id === id)
     }
 
     async function getUser() {
         run()
     }
+    
+    async function login(email, password) {
+    }
+
+    async function signUp(name, email, password) {
+        const hashedPassword = await bcrypt.hash(password, 10)
+        users.push({
+            id: Date.now().toString(),
+            name: name,
+            email: email,
+            password: hashedPassword
+        })
+    }
+    
 
     async function getProfessionals() {
         return await getData("data/professionals.json")
@@ -46,11 +58,28 @@ export default function dataFunctions() {
         const data = await fs.readFile(path)
         return JSON.parse(data)
     }
+
+    async function run() {
+        try {
+            // Connect the client to the server	(optional starting in v4.7)
+            await client.connect();
+            // Send a ping to confirm a successful connection
+            await client.db("admin").command({ ping: 1 });
+            console.log("Pinged your deployment. You successfully connected to MongoDB!");
+          } finally {
+            // Ensures that the client will close when you finish/error
+            await client.close();
+          }
+    }
     
     return {
         getProfessionals,
         getServices,
         getGallery,
-        getUser
+        getUser,
+        login,
+        signUp,
+        getUserByEmail,
+        getUserById
     }
 }

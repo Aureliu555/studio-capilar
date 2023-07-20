@@ -1,0 +1,15 @@
+<form action="/api/login" method="POST">
+    <div style="margin-top: 100px;">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+    <button type="submit">Login</button>
+</form>
+<a href="/signUp">Sign Up</a>
+{{#if messages.error}}
+    {{messages.error}}
+{{/if}}

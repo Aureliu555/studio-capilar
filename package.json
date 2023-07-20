@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.mjs",
   "scripts": {
+    "devStart": "nodemon server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,12 +12,16 @@
     "url": "git+https://github.com/Aureliu555/studio-capilar.git"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "bootstrap-icons": "^1.10.5",
     "express": "^4.18.2",
+    "express-flash": "^0.0.2",
     "express-handlebars": "^6.0.7",
+    "express-session": "^1.17.3",
     "hbs": "^4.2.0",
     "mongodb": "^5.7.0",
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^3.3.1",
+    "passport-local": "^1.0.0"
   },
   "keywords": [],
   "author": "",
@@ -24,5 +29,9 @@
   "bugs": {
     "url": "https://github.com/Aureliu555/studio-capilar/issues"
   },
-  "homepage": "https://github.com/Aureliu555/studio-capilar#readme"
+  "homepage": "https://github.com/Aureliu555/studio-capilar#readme",
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1"
+  }
 }
