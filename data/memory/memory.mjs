@@ -29,19 +29,27 @@ export default function dataFunctions() {
     }
     
     async function login(email, password) {
+        const user = users.find(user => user.email === email)
+        if (await bcrypt.compare(password, user.password)) {
+            return user
+        } else {
+            throw new Error('Wrong password')
+        }
     }
 
     async function signUp(name, email, password) {
         const hashedPassword = await bcrypt.hash(password, 10)
-        users.push({
+        const newUser = {
             id: Date.now().toString(),
             name: name,
             email: email,
-            password: hashedPassword
-        })
+            password: hashedPassword,
+            status: { owner: false, client: true, student: false }
+        }
+        users.push(newUser)
+        return newUser
     }
     
-
     async function getProfessionals() {
         return await getData("data/professionals.json")
     }

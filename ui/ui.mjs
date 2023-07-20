@@ -6,21 +6,12 @@ export default function uiFunctions() {
     async function homePage(req, resp) {
         const professionals = await fetchData("api/professionals")
         const galleryJson = await fetchData("api/gallery")
-        console.log(req.user.name)
-        resp.render("home", {"owner": professionals.owner, "workers": professionals.workers, "gallery_imgs": galleryJson.gallery})
+        resp.render("home", {"owner": professionals.owner, "workers": professionals.workers, "gallery_imgs": galleryJson.gallery, 'user': req.user})
     }
-
+    
     async function schedulesPage(req, resp) {
         const schedules = await fetchData("api/schedules")
-        resp.render("schedules", {"schedules": schedules})
-    }
-
-    async function login(req, resp) {
-        resp.render("login")
-    }
-
-    async function signUp(req, resp) {
-        resp.render("signUp")
+        resp.render("schedules", {"schedules": schedules, 'user': req.user})
     }
 
     async function fetchData(url) {
@@ -30,8 +21,6 @@ export default function uiFunctions() {
     
     return {
         homePage,
-        schedulesPage,
-        login,
-        signUp
+        schedulesPage
     }
 }

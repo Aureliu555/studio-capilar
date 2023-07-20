@@ -1,11 +1,11 @@
 export default function servicesFunctions(data) {
 
     async function login(email, password) {
-        const res = await data.login()
+        return await data.login(email, password)
     }
 
     async function signUp(name, email, password) {
-        await data.signUp(name, email, password)
+        return await data.signUp(name, email, password)
     }
 
     async function getUserByEmail(email) {
@@ -16,6 +16,7 @@ export default function servicesFunctions(data) {
         return await data.getUserById(id)
     }
 
+    // Not being used
     async function getUser() {
         return await data.getUser()
     }

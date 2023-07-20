@@ -2,10 +2,10 @@ import express from 'express'
 import expressSession from 'express-session'
 import passport from 'passport'
 
-function authUiFunction(services){
+function authUiFunction(services) {
     const router = express.Router()
 
-    router.use(expressSession({secret : 'STUDIO-CAPILAR', resave : true, saveUninitialized : true}))
+    router.use(expressSession({secret : process.env.SESSION_SECRET, resave : true, saveUninitialized : true}))
     router.use(passport.initialize())
     router.use(passport.session())
 
@@ -20,37 +20,44 @@ function authUiFunction(services){
 
     return router
 
-    function getLoginView(req, resp){ 
-        resp.render('login', {loginOrSignup: true})
+    function getLoginView(req, resp) { 
+        resp.render('login', {'user': req.user})
     }
 
-    function postLogin(req, resp){
-        const username = req.body.username
+    async function postLogin(req, resp) {
+        const email = req.body.email
         const password = req.body.password
-        services
-            .validateUser(username, password)
-            .then(user => login(req,user))
-            .then(() => { resp.redirect(services.auxUrl) })    
-            .catch(() => resp.render("login", {loginOrSignup: true, error: "Invalid Credentials"})) // check if error is (invalid username) or (invalid password)
+        try {
+            const user = await services.login(email, password)
+            await login(req, user)
+            resp.redirect('/')
+        } catch (e) {
+            resp.render("login", {loginOrSignup: true, error: "Invalid Credentials", 'user': req.user})
+        }
     }
 
     function getSignUpView(req, resp){
-        resp.render('signup', {loginOrSignup: true})
+        resp.render('signup', {'user': req.user})
     }
 
-    function postSignUp(req, resp){
-        services.createUser(req.body.username, req.body.password, req.body.email)
-        .then(() => postLogin(req,resp))
-        .catch(error => resp.render('signup', {loginOrSignup: true, error: error.error}))
+    async function postSignUp(req, resp) {
+        try {
+            const user = await services.signUp(req.body.username, req.body.email, req.body.password)
+            await login(req, user)
+            resp.redirect('/')
+        } catch(e) {
+            console.log(e)
+            resp.render('signup', {loginOrSignup: true, error: e, 'user': req.user})
+        }
     }
 
-    function postLogout(req, resp){
-        req.logout(()=>resp.redirect('/'))
+    function postLogout(req, resp) {
+        req.logout(() => resp.redirect('/'))
     }
 
-    function login(req, user){
-        return new Promise((resolve,reject) => {
-            req.login(user, (error, result) =>{
+    function login(req, user) {
+        return new Promise( (resolve,reject) => {
+            req.login(user, (error, result) => {
                 if(error) reject(error)
                 else resolve(result)
             })

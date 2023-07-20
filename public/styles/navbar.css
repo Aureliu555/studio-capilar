@@ -150,8 +150,12 @@
     text-decoration: none;
     width: fit-content;
 }
+
+.hrefs-desktop form {
+    width: fit-content;
+}
     
-.hrefs-desktop a:hover {
+.hrefs-desktop a:hover, .hrefs-desktop form:hover {
     color: rgb(255, 174, 24);
     margin-top: -10px;
     transition: 0.4s;
