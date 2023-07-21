@@ -1,20 +1,39 @@
-<form action="/signup" method="POST">
-    <div style="margin-top: 20px;">
-        <label for="username">Name</label>
-        <input type="text" name="username" id="username" required>
-    </div>
-    <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-    </div>
-    <button type="submit">Sign Up</button>
-</form>
-<a href="/login">Login</a>
+<link rel="stylesheet" href="styles/authentication.css">
 
-{{#if error}}
-    {{error.message}}
-{{/if}}
+<div class="row authentication-page-container">
+    <div class="col authentication-container">
+        <div class="row">
+            <a href="/">
+                <img class="authentication-img" src="imgs/brand.png">
+            </a>
+        </div>
+        <div class="row formDiv">
+            <form action="/signup{{redirectUrl}}" method="POST">
+                <div>
+                    <label for="username">Name</label>
+                    <br>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <br>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <br>
+                <button type="submit">Sign Up</button>
+            </form>
+            <span class="question">Already have an account?</span>
+            <hr class="separation">
+            <a href="/login{{redirectUrl}}">Login</a>
+
+            {{#if error}}
+                {{error.message}}
+            {{/if}}
+        </div>
+    </div>
+</div>

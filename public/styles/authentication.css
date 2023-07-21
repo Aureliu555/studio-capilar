@@ -1,0 +1,144 @@
+.authentication-page-container {
+    width: 30%;
+    margin-left: 35%
+}
+
+.authentication-container {
+    align-items: center; 
+    justify-content:center;
+    margin-top: 5%;
+}
+
+.authentication-img {
+    width: 200px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.authentication-img:hover {
+    width: 240px;
+    height: 60px;
+    margin-bottom: 10px;
+    background: rgba(8, 8, 8, 0.3);
+    border-radius: 5%;
+}
+
+.formDiv {
+    border: solid white 1px;
+    border-radius: 5%;
+    padding: 30px;
+    margin-top: 10px;
+}
+
+.formDiv input {
+    background: none;
+    border: solid white 1px;
+    margin-bottom: 10px;
+    width: 100%;
+    color: white;
+    padding: 5px;
+}
+
+.formDiv a, .formDiv button {
+    width: 70%;
+    margin-left: 15%;
+    color: white; 
+    border-radius: 5%;
+    border: 1px solid #fff;
+    padding: 5px 0;
+}
+
+.formDiv button {
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.formDiv a {
+    margin-bottom: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.formDiv button:hover, .formDiv a:hover {
+    background: rgba(8, 8, 8, 0.3);
+    color: orange; 
+}
+
+.question {
+    color: white;
+    margin-top: 50px;
+    font-size: small
+}
+
+.separation {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+
+@media (max-width: 1024px) {
+    .authentication-page-container {
+        width: 90%;
+        margin-left: 5%
+    }
+
+    .formDiv {
+        width: 100%;
+    }
+}
+
+@media (min-height: 1081px) {
+    .authentication-page-container {
+        width: 90%;
+        margin-left: 5%
+    }
+
+    .authentication-container {
+        margin-top: 30%;
+    }
+    
+    .authentication-img {
+        width: 400px;
+        height: 100px;
+        margin-bottom: 70px;
+    }
+
+    .authentication-img:hover {
+        width: 440px;
+        height: 110px;
+        margin-bottom: 30px;
+    }
+
+    .formDiv {
+        width: 100%;
+    }
+
+    .formDiv label {
+        font-size: 40px;
+    }
+    
+    .formDiv input {
+        padding: 10px 10px;
+        font-size: 35px;
+    }
+    
+    .formDiv a, .formDiv button {
+        font-size: 35px;
+        padding: 10px 0;
+    }
+    
+    .formDiv a {
+        margin-bottom: 20px;
+    }
+    
+    .question {
+        font-size: 20px;
+    }
+    
+    .separation {
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 20px;
+    }
+}

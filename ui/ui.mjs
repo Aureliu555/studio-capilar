@@ -14,6 +14,10 @@ export default function uiFunctions() {
         resp.render("schedules", {"schedules": schedules, 'user': req.user})
     }
 
+    async function classes(req, resp) {
+        resp.render("classes", {'user': req.user})
+    }
+
     async function fetchData(url) {
         const res = await fetch(API_BASE_URL + url, {method: "GET", headers: {"Accept" : "application/json"}})
         return await res.json()
@@ -21,6 +25,7 @@ export default function uiFunctions() {
     
     return {
         homePage,
-        schedulesPage
+        schedulesPage,
+        classes
     }
 }

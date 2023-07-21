@@ -63,10 +63,14 @@
                                 <hr>
                                 <a href="/#gallery"> Galeria</a>
                                 <hr>
+                                {{#if user.status.student}}
+                                    <a href="/"> Aulas</a>
+                                {{/if}}
+                                <hr>
                                 {{#if user}}
-                                <a href="/logout"> LogOut</a>
+                                    <form action="/logout" method="POST"><a href="#" onclick="this.parentNode.submit()"> LogOut</a></form>
                                 {{else}}
-                                <a href="/login"> LogIn</a>
+                                    <a href="/login"> LogIn</a>
                                 {{/if}}
                                 <hr>
                             </div>

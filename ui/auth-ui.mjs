@@ -2,7 +2,7 @@ import express from 'express'
 import expressSession from 'express-session'
 import passport from 'passport'
 
-function authUiFunction(services) {
+function authUiFunction(services, appMiddlewares) {
     const router = express.Router()
 
     router.use(expressSession({secret : process.env.SESSION_SECRET, resave : true, saveUninitialized : true}))
@@ -21,7 +21,7 @@ function authUiFunction(services) {
     return router
 
     function getLoginView(req, resp) { 
-        resp.render('login', {loginOrSignup: true})
+        resp.render('login', {loginOrSignup: true, redirectUrl: getRedirectUrl(req)})
     }
 
     async function postLogin(req, resp) {
@@ -29,8 +29,7 @@ function authUiFunction(services) {
         const password = req.body.password
         try {
             const serializableUser = await services.login(email, password)
-            await login(req, serializableUser)
-            resp.redirect('/') // needs to be redirected to the page it was before needing authentication
+            await loginAndRedirect(req, resp, serializableUser)
         } catch (error) {
             // error mapping needs to be implemented
             resp.render("login", {loginOrSignup: true, error: error})
@@ -38,15 +37,16 @@ function authUiFunction(services) {
     }
 
     function getSignUpView(req, resp){
-        resp.render('signup', {loginOrSignup: true})
+        resp.render('signup', {loginOrSignup: true, redirectUrl: getRedirectUrl(req)})
     }
 
     async function postSignUp(req, resp) {
         try {
+            // the user needs to be serializable one
             const user = await services.signUp(req.body.username, req.body.email, req.body.password)
-            await login(req, user)
-            resp.redirect('/') // needs to be redirected to the page it was before needing authentication
+            await loginAndRedirect(req, resp, user)
         } catch(error) {
+            // error mapping needs to be implemented
             resp.render('signup', {loginOrSignup: true, error: error})
         }
     }
@@ -62,6 +62,18 @@ function authUiFunction(services) {
                 else resolve(result)
             })
         })
+    }
+
+    async function loginAndRedirect(req, resp, user) {
+        await login(req, user)
+        if (req.query.redirectUrl) resp.redirect(req.query.redirectUrl) 
+        else resp.redirect('/')
+    }
+
+    function getRedirectUrl(req) {
+        let redirectUrl = ''
+        if (req.query.redirectUrl) redirectUrl = '?redirectUrl=' + req.query.redirectUrl
+        return redirectUrl
     }
 }
 

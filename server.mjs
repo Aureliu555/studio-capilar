@@ -10,11 +10,12 @@ import apiFunctions from './api/api.mjs'
 import servicesFunctions from './services/services.mjs'
 import dataFunctions from './data/memory/memory.mjs'
 import authUIFunction from './ui/auth-ui.mjs'
+import appMiddlewares from './middlewares/middlewares.mjs'
 
 const data = dataFunctions()
 const services = servicesFunctions(data)
 const api = apiFunctions(services)
-const authRouter = authUIFunction(services)
+const authRouter = authUIFunction(services, appMiddlewares)
 const ui = uiFunctions()
 
 const PORT = process.env.PORT || 5555
@@ -36,13 +37,6 @@ app.get("/api/test", api.getUser)
 
 app.get("/", ui.homePage)
 app.get("/schedules", ui.schedulesPage)
-
-/*function checkAuthenticated(req, resp, next) {
-    if (req.isAuthenticated()) {
-        return next()
-    }
-    
-    resp.redirect('/login')
-}*/
+app.get("/classes", appMiddlewares.checkAuthenticated, ui.classes)
 
 app.listen(PORT, () => console.log(`Listening...\nhttp://localhost:`+ PORT))
