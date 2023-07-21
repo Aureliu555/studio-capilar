@@ -1,15 +1,18 @@
 export default function servicesFunctions(data) {
 
     async function login(email, password) {
-        return await data.login(email, password)
+        const user = await data.login(email, password)
+        const serializableUser = {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            status: user.status
+        }
+        return serializableUser
     }
 
     async function signUp(name, email, password) {
         return await data.signUp(name, email, password)
-    }
-
-    async function getUserByEmail(email) {
-        return await data.getUserByEmail(email)
     }
 
     async function getUserById(id) {
@@ -40,7 +43,6 @@ export default function servicesFunctions(data) {
         getUser,
         login,
         signUp,
-        getUserByEmail,
         getUserById
     }
 }

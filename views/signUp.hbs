@@ -1,5 +1,5 @@
 <form action="/signup" method="POST">
-    <div style="margin-top: 100px;">
+    <div style="margin-top: 20px;">
         <label for="username">Name</label>
         <input type="text" name="username" id="username" required>
     </div>
@@ -14,3 +14,7 @@
     <button type="submit">Sign Up</button>
 </form>
 <a href="/login">Login</a>
+
+{{#if error}}
+    {{error.message}}
+{{/if}}

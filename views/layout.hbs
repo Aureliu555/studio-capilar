@@ -18,7 +18,8 @@
     <body>
         <div class="main-content">
             <div class="row" style="align-items:space-between; justify-content: center">
-            <div class="row navbar-container">
+                {{#unless loginOrSignup}}
+                <div class="row navbar-container">
                     <div class="col brand-img-container">
                         <a href="/" style="width:fit-content;"><img class="brand-img" src="./imgs/brand.png"></a>
                     </div>
@@ -29,10 +30,14 @@
                             <a href="/#professionls"> Profissionais</a>
                             <a href="/#location"> Localização</a>
                             <a href="/#gallery"> Galeria</a>
+                            {{#if user.status.student}}
+                                <a href="/"> Aulas</a>
+                            {{/if}}
                             {{#if user}}
-                            <form action="/logout" method="POST"><a href="#" onclick="this.parentNode.submit()"> LogOut</a></form>
+                                <!--<a href="/"> Histórico</a> Link que deve aparecer na página do Agendar-->
+                                <form action="/logout" method="POST"><a href="#" onclick="this.parentNode.submit()"> LogOut</a></form>
                             {{else}}
-                            <a href="/login"> LogIn</a>
+                                <a href="/login"> LogIn</a>
                             {{/if}}
                         </nav>
                     </div>
@@ -92,6 +97,7 @@
                         </div>
                     </div>
                 </div>
+                {{/unless}}
             </div>
             <div>
                 {{{body}}}

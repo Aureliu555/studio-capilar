@@ -9,7 +9,7 @@ function authUiFunction(services) {
     router.use(passport.initialize())
     router.use(passport.session())
 
-    passport.serializeUser((user, done) => done(null, user))
+    passport.serializeUser((serializableUser, done) => done(null, serializableUser))
     passport.deserializeUser((user, done) => done(null, user))
 
     router.get("/login", getLoginView)
@@ -21,33 +21,33 @@ function authUiFunction(services) {
     return router
 
     function getLoginView(req, resp) { 
-        resp.render('login', {'user': req.user})
+        resp.render('login', {loginOrSignup: true})
     }
 
     async function postLogin(req, resp) {
         const email = req.body.email
         const password = req.body.password
         try {
-            const user = await services.login(email, password)
-            await login(req, user)
-            resp.redirect('/')
-        } catch (e) {
-            resp.render("login", {loginOrSignup: true, error: "Invalid Credentials", 'user': req.user})
+            const serializableUser = await services.login(email, password)
+            await login(req, serializableUser)
+            resp.redirect('/') // needs to be redirected to the page it was before needing authentication
+        } catch (error) {
+            // error mapping needs to be implemented
+            resp.render("login", {loginOrSignup: true, error: error})
         }
     }
 
     function getSignUpView(req, resp){
-        resp.render('signup', {'user': req.user})
+        resp.render('signup', {loginOrSignup: true})
     }
 
     async function postSignUp(req, resp) {
         try {
             const user = await services.signUp(req.body.username, req.body.email, req.body.password)
             await login(req, user)
-            resp.redirect('/')
-        } catch(e) {
-            console.log(e)
-            resp.render('signup', {loginOrSignup: true, error: e, 'user': req.user})
+            resp.redirect('/') // needs to be redirected to the page it was before needing authentication
+        } catch(error) {
+            resp.render('signup', {loginOrSignup: true, error: error})
         }
     }
 

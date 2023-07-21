@@ -1,7 +1,8 @@
-/*import dotenv from 'dotenv'
+import dotenv from 'dotenv'
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config()
-}*/
+}
+
 import express from 'express'
 
 import uiFunctions from './ui/ui.mjs'

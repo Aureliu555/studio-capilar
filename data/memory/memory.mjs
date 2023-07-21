@@ -16,28 +16,26 @@ const users = []
 
 export default function dataFunctions() {
 
-    async function getUserByEmail(email) {
-        return users.find(user => user.email === email)
-    }
-
     async function getUserById(id) {
         return users.find(user => user.id === id)
     }
 
+    // mongodb starting point example
     async function getUser() {
         run()
     }
     
     async function login(email, password) {
         const user = users.find(user => user.email === email)
-        if (await bcrypt.compare(password, user.password)) {
-            return user
-        } else {
-            throw new Error('Wrong password')
-        }
+        if (user === undefined) throw new Error('Email not registered') // every thrown error needs to come from a file with specific errors for each case
+
+        if (await bcrypt.compare(password, user.password)) return user 
+        else throw new Error('Invalid Credentials')
     }
 
     async function signUp(name, email, password) {
+        const user = users.find(u => u.email === email)
+        if (user) throw new Error('User with given email already exists') 
         const hashedPassword = await bcrypt.hash(password, 10)
         const newUser = {
             id: Date.now().toString(),
@@ -67,6 +65,7 @@ export default function dataFunctions() {
         return JSON.parse(data)
     }
 
+    // mongodb starting point example
     async function run() {
         try {
             // Connect the client to the server	(optional starting in v4.7)
@@ -87,7 +86,6 @@ export default function dataFunctions() {
         getUser,
         login,
         signUp,
-        getUserByEmail,
         getUserById
     }
 }
