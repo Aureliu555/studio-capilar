@@ -2,8 +2,9 @@ export default function servicesFunctions(data) {
 
     async function login(email, password) {
         const user = await data.login(email, password)
+        // id not being used
         const serializableUser = {
-            id: user.id,
+            id: user._id,
             name: user.name,
             email: user.email,
             status: user.status
@@ -15,13 +16,16 @@ export default function servicesFunctions(data) {
         return await data.signUp(name, email, password)
     }
 
-    async function getUserById(id) {
-        return await data.getUserById(id)
+    async function getEnrollmentRequests() {
+        return data.getEnrollmentRequests()
     }
 
-    // Not being used
-    async function getUser() {
-        return await data.getUser()
+    async function addEnrollRequest(name, email) {
+        await data.addEnrollRequest(name, email)
+    }
+
+    async function acceptEnrollmentRequest(email) {
+        await data.acceptEnrollmentRequest(email)
     }
     
     async function getProfessionals() {
@@ -40,9 +44,10 @@ export default function servicesFunctions(data) {
         getProfessionals,
         getServices,
         getGallery,
-        getUser,
         login,
         signUp,
-        getUserById
+        getEnrollmentRequests,
+        addEnrollRequest,
+        acceptEnrollmentRequest
     }
 }

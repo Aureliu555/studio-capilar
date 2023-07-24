@@ -1,3 +1,5 @@
+import fetch from "node-fetch"
+
 function checkAuthenticated(req, resp, next) {
     if (req.isAuthenticated()) {
         return next()

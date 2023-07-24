@@ -71,6 +71,13 @@
     font-size: small
 }
 
+.error {
+    margin-top: 20px;
+    width: 100%;
+    color: red;
+    text-align: center;
+}
+
 .separation {
     width: 80%;
     margin-left: 10%;

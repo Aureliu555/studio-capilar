@@ -8,6 +8,9 @@
             </a>
         </div>
         <div class="row formDiv">
+            {{#if error}}
+                <span class="error">{{error.message}}</span>
+            {{/if}}
             <form action="/signup{{redirectUrl}}" method="POST">
                 <div>
                     <label for="username">Name</label>
@@ -30,10 +33,6 @@
             <span class="question">Already have an account?</span>
             <hr class="separation">
             <a href="/login{{redirectUrl}}">Login</a>
-
-            {{#if error}}
-                {{error.message}}
-            {{/if}}
         </div>
     </div>
 </div>

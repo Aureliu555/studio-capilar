@@ -1,28 +1,36 @@
-const ERRORS_MAPPER = {
-    invalidGroupId: 400,
-    invalidRange: 400,
-    invalidMovieName: 400,
-    invalidGroupInfo: 400,
-    invalidMovieId: 400,
-    notFound: 404,
-    notAuthorized: 401
+function nonExistentEmail() {
+    return {
+        desc: "nonExistentEmail",
+        message: `O email inserido ainda não está registrado`
+    }
 }
 
-const DEFAULT_ERROR = {
-    status: 500, 
-    body:  {
-        description: `An internal error occurred. Contact your system administrator`
-    } 
+function invalidCredentials() {
+    return {
+        desc: "invalidCredentials",
+        message: `Credenciais inválidas`
+    }
 }
 
-export function convertToHttpError(error) {
-    const status = ERRORS_MAPPER[error.desc]
-    return status ?  
-        {
-            status: status, 
-            body:  {
-                description: error.error
-            } 
-        } 
-        : DEFAULT_ERROR
+function existentEmail(message) {
+    return {
+        desc: "existentEmail",
+        message: `O email inserido já está registrado`
+    }
 }
+
+function notAuthorized() {
+    return {
+        desc: "notAuthorized",
+        error: `You are not authorized to access this resource`
+    }
+}
+
+const errors = {
+    NON_EXISTENT_EMAIL: nonExistentEmail,
+    INVALID_CREDENTIALS: invalidCredentials,
+    EXISTENT_EMAIL: existentEmail,
+    NOT_AUTHORIZED: notAuthorized
+}
+
+export default errors
