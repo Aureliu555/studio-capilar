@@ -44,5 +44,7 @@ app.get("/course", appMiddlewares.checkAuthenticated, ui.course)
 app.post("/course/enroll", ui.enroll)
 app.get("/enrollmentRequests", appMiddlewares.checkAuthenticated, ui.getEnrollmentRequests)
 app.post("/enrollmentRequests/accept/:userEmail", appMiddlewares.checkAuthenticated, ui.acceptEnrollmentRequest)
+app.get("/testVimeoApi", ui.testVimeoApi)
+
 
 app.listen(PORT, () => console.log(`Listening...\nhttp://localhost:`+ PORT))
