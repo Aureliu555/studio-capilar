@@ -9,37 +9,6 @@ const clientRequestAsync = util.promisify(client.request.bind(client));
 export default function uiFunctions(services) {
     const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:5555/"
 
-    async function testVimeoApi(req, resp) {
-
-        client.request({
-            method: 'GET',
-            path: '/me/videos'
-        }, (err, body) => {
-            const resData = body.data.map(vid => {
-                return { 
-                    name: vid.name, 
-                    uri: vid.uri, 
-                    player_embed_url: vid.player_embed_url, 
-                    thumbnail_src: vid.pictures.base_link,
-                    folder: vid.parent_folder.name 
-                }
-            })
-
-            const resultDict = resData.reduce((acc, obj) => {
-                const { name, uri, player_embed_url, thumbnail_src, folder } = obj;
-                if (!acc[folder]) {
-                    acc[folder] = [];
-                }
-                acc[folder].push({name, uri, player_embed_url, thumbnail_src});
-                return acc;
-                }, {})
-            
-            const toRender = Object.keys(resultDict).map((prop) => { return{ folder: prop, vids: resultDict[prop] } })
-            resp.json(toRender)
-        })
-        
-    }
-
     async function homePage(req, resp) {
         const professionals = await fetchData("api/professionals")
         const galleryJson = await fetchData("api/gallery")
@@ -52,8 +21,29 @@ export default function uiFunctions(services) {
     }
 
     async function classes(req, resp) {
-        // render an unauthorized error view in case the !user.status.student && !user.status.owner
-        resp.render("classes", {'user': req.user})
+        if (req.query.videoId) await getVideo(req, resp)
+        else await getFolders(req, resp) 
+    }
+
+    async function getFolders(req, resp) {
+        client.request({
+            method: 'GET',
+            path: '/me/videos'
+        }, async (err, body) => {
+            // handle error
+            const folders = await services.getFolders(body.data)
+            resp.render("classes", {'user': req.user, 'folders': folders})
+        }) 
+    }
+    
+    async function getVideo(req, resp) {
+        client.request({
+            method: 'GET',
+            path: '/videos/' + req.query.videoId
+        }, async (err, body) => {
+            // handle error
+            resp.render("video", {'user': req.user, 'video_url': body.player_embed_url})
+        })
     }
 
     async function course(req, resp) {
@@ -99,7 +89,6 @@ export default function uiFunctions(services) {
         course,
         enroll,
         getEnrollmentRequests,
-        acceptEnrollmentRequest,
-        testVimeoApi
+        acceptEnrollmentRequest
     }
 }

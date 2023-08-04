@@ -16,6 +16,35 @@ export default function servicesFunctions(data) {
         return await data.signUp(name, email, password)
     }
 
+    async function getFolders(videos) {
+        const resData = videos.map(vid => {
+            const newArr = vid.uri.split('/')
+            return { 
+                name: vid.name, 
+                uri: vid.uri, 
+                vidId: newArr[newArr.length - 1],
+                player_embed_url: vid.player_embed_url, 
+                thumbnail_src: vid.pictures.base_link,
+                folder: vid.parent_folder.name 
+            }
+        })
+
+        const resultDict = resData.reduce((acc, obj) => {
+            const { name, uri, vidId, player_embed_url, thumbnail_src, folder } = obj;
+            if (!acc[folder]) {
+                acc[folder] = [];
+            }
+            acc[folder].push({name, uri, vidId, player_embed_url, thumbnail_src});
+            return acc;
+            }, {})
+        
+        return Object.keys(resultDict).map((prop) => { return { folder: prop, vids: resultDict[prop] } }).reverse()
+    }
+
+    async function getVideo(videoInfo) {
+        return videoInfo
+    }
+
     async function getEnrollmentRequests() {
         return data.getEnrollmentRequests()
     }
@@ -48,6 +77,8 @@ export default function servicesFunctions(data) {
         signUp,
         getEnrollmentRequests,
         addEnrollRequest,
-        acceptEnrollmentRequest
+        acceptEnrollmentRequest,
+        getFolders,
+        getVideo
     }
 }
