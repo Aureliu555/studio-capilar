@@ -1,11 +1,27 @@
 <link rel="stylesheet" href="styles/classes.css">
-<div class="row" style="margin-top: 100px;">
+<div class="row classes-page-container">
     <div class="col">
         {{#each folders}}
-        <h3>{{folder}}</h3>
-        <div class="folderContainer">
+        <h3 class="folder-name">{{folder}}</h3>
+        <hr class="folder-separation">
+        <div class="folder-container">
                 {{#each vids}}
-                <a href="/classes?videoId={{vidId}}"><img src="{{thumbnail_src}}" width="100%" height="100%"></a>
+                <div>
+                    <div style="width: 100%; height: 100%">
+                        <a href="/classes?videoId={{vidId}}">
+                            <div class="thumbnail-container">
+                                <img class="thumbnail" src="{{thumbnail_src}}">
+                                <div class="duration-container"> 
+                                    <span class="video-duration"> {{duration}} </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="video-name">
+                        <span >{{name}}</span>
+                    </div>
+                </div>
+                    
                 {{/each}}
         </div>
         {{/each}}

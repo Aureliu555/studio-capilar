@@ -3,7 +3,7 @@ import vimeo from 'vimeo'
 import util from 'util'
 
 let Vimeo = vimeo.Vimeo
-const client = new Vimeo("367573aa7b8620ebaad26c2eb7a38f3f017dc448", "coHHb77Gj6v34/ZoZ/VvBxQLidGQuUJOYCy4gC0Udea3bC4trJzrxUo3Fr4PXnLuezK9nByRaYd0vimpGpCHjwzMmMkgoRrc+r1mWFMQua34NHFGxn+jgQa3IO6Q224D", "e175d19b531ebef181b4426d55bc6b22");
+const client = new Vimeo(process.env.CLIENT_ID, process.env.CLIENT_SECRET, "00c6c81958b9c46c279275730bf467b3");
 const clientRequestAsync = util.promisify(client.request.bind(client));
 
 export default function uiFunctions(services) {

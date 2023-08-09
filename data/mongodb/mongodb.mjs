@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises'
 import {MongoClient, ServerApiVersion} from 'mongodb'
-import bcrypt from 'bcrypt'
+import CryptoJS from 'crypto-js'
 import errors from '../../errors/app-errros.mjs'
 
 const MONGO_URI = process.env.MONGO_URI
@@ -22,7 +22,8 @@ export default function dataFunctions() {
             const user = await usersCollection.findOne({'email': email})
             if (!user) return Promise.reject(errors.NON_EXISTENT_EMAIL())
 
-            if (await bcrypt.compare(password, user.password)) return user 
+            const hashedPassword = CryptoJS.SHA256(password).toString()
+            if (hashedPassword === user.password) return user
             else return Promise.reject(errors.INVALID_CREDENTIALS())
         })
     }
@@ -34,7 +35,7 @@ export default function dataFunctions() {
             const existentEmail = await usersCollection.findOne({'email': email})
             if (existentEmail) return Promise.reject(errors.EXISTENT_EMAIL())
 
-            const hashedPassword = await bcrypt.hash(password, 10)
+            const hashedPassword = CryptoJS.SHA256(password).toString()
             const newUser = {
                 name: name,
                 email: email,

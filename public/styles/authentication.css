@@ -6,21 +6,13 @@
 .authentication-container {
     align-items: center; 
     justify-content:center;
-    margin-top: 5%;
+    margin-top: 14%;
 }
 
 .authentication-img {
     width: 200px;
     height: 50px;
     margin-bottom: 20px;
-}
-
-.authentication-img:hover {
-    width: 240px;
-    height: 60px;
-    margin-bottom: 10px;
-    background: rgba(8, 8, 8, 0.3);
-    border-radius: 5%;
 }
 
 .formDiv {
@@ -109,12 +101,6 @@
         width: 400px;
         height: 100px;
         margin-bottom: 70px;
-    }
-
-    .authentication-img:hover {
-        width: 440px;
-        height: 110px;
-        margin-bottom: 30px;
     }
 
     .formDiv {

@@ -30,8 +30,16 @@
                             <a href="/#professionls"> Profissionais</a>
                             <a href="/#location"> Localização</a>
                             <a href="/#gallery"> Galeria</a>
-                            <a href="/course"> Curso</a>
+                            {{#if user}}
+                                {{#unless user.status.student}} 
+                                    <a href="/course"> Curso </a> 
+                                {{/unless}}
+                            {{/if}}
                             {{#if user.status.student}}
+                                <a href="/classes"> Aulas</a>
+                            {{/if}}
+                            <!-- shouldn't be 2 links -->
+                            {{#if user.status.owner}}
                                 <a href="/classes"> Aulas</a>
                             {{/if}}
                             {{#if user}}
@@ -64,9 +72,17 @@
                                 <hr>
                                 <a href="/#gallery"> Galeria</a>
                                 <hr>
-                                <a href="/course"> Curso</a>
+                                {{#if user}}
+                                    {{#unless user.status.student}} 
+                                        <a href="/course"> Curso </a> 
+                                    {{/unless}}
+                                {{/if}}
                                 <hr>
                                 {{#if user.status.student}}
+                                    <a href="/classes"> Aulas</a>
+                                {{/if}}
+                                <!-- shouldn't be 2 links -->
+                                {{#if user.status.owner}}
                                     <a href="/classes"> Aulas</a>
                                 {{/if}}
                                 <hr>

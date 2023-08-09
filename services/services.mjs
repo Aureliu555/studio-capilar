@@ -1,3 +1,5 @@
+import { format, addSeconds } from 'date-fns'
+
 export default function servicesFunctions(data) {
 
     async function login(email, password) {
@@ -23,22 +25,38 @@ export default function servicesFunctions(data) {
                 name: vid.name, 
                 uri: vid.uri, 
                 vidId: newArr[newArr.length - 1],
-                player_embed_url: vid.player_embed_url, 
+                duration: formatTime(vid.duration), 
                 thumbnail_src: vid.pictures.base_link,
                 folder: vid.parent_folder.name 
             }
         })
 
-        const resultDict = resData.reduce((acc, obj) => {
-            const { name, uri, vidId, player_embed_url, thumbnail_src, folder } = obj;
+        const resultDict = getFolderVidsDictionary(resData)
+        
+        return resultDict 
+    }
+
+    function getFolderVidsDictionary(data) {
+        const resultDict = data.reduce((acc, obj) => {
+            const { name, uri, vidId, duration, thumbnail_src, folder } = obj;
             if (!acc[folder]) {
                 acc[folder] = [];
             }
-            acc[folder].push({name, uri, vidId, player_embed_url, thumbnail_src});
+            acc[folder].push({name, uri, vidId, duration, thumbnail_src});
             return acc;
             }, {})
-        
-        return Object.keys(resultDict).map((prop) => { return { folder: prop, vids: resultDict[prop] } }).reverse()
+    
+        // organize videos by publication date    
+        return Object.keys(resultDict).map((prop) => { return { folder: prop, vids: resultDict[prop].reverse() } })
+    }
+
+    function formatTime(seconds) {
+        const helperDate = addSeconds(new Date(0), seconds);
+        if (seconds >= 3600) {
+            return format(helperDate, 'H:mm:ss')
+        } else {
+            return format(helperDate, 'm:ss')
+        }
     }
 
     async function getVideo(videoInfo) {

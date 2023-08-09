@@ -1,0 +1,19 @@
+.video-container {
+    padding: 60% 0% 10% 10%; 
+    position: relative; 
+    margin-left: 10%
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+}
+
+@media (min-height: 1081px) {
+    .video-container {
+        margin-top: 200px;
+    }
+}
