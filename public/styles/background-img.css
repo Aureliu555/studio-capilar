@@ -10,13 +10,10 @@
 }
 
 .main-text .description {
-    font-family: "Playfair Display";
+    font-family: "Playfair Display", serif;
 }
 
-p {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 20px;
+.main-text p {
     color: white;
 }
 
@@ -29,12 +26,13 @@ p {
     background-color: rgba(0, 0, 0, 0.2);
     width: 700px;
     text-align: center;
+    padding: 10px 0;
 }
 
 .slogan {
     font-family: "Brush Script MT", cursive;
     font-size: 55px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .description {

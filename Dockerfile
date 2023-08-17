@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install date-fns vimeo crypto-js bootstrap-icons express express-handlebars express-session hbs mongodb node-fetch passport --production
+RUN npm install date-fns vimeo crypto-js bootstrap-icons express express-handlebars express-session hbs mongodb node-fetch passport --omit=dev
 
 COPY . .
 

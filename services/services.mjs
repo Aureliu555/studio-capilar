@@ -1,4 +1,5 @@
 import { format, addSeconds } from 'date-fns'
+import errors from '../errors/app-errros.mjs'
 
 export default function servicesFunctions(data) {
 
@@ -18,7 +19,8 @@ export default function servicesFunctions(data) {
         return await data.signUp(name, email, password)
     }
 
-    async function getFolders(videos) {
+    async function getFolders(user, videos) {
+        if (user.status.client) return Promise.reject(errors.NOT_AUTHORIZED())
         const resData = videos.map(vid => {
             const newArr = vid.uri.split('/')
             return { 
@@ -32,8 +34,12 @@ export default function servicesFunctions(data) {
         })
 
         const resultDict = getFolderVidsDictionary(resData)
-        
         return resultDict 
+    }
+
+    async function getVideo(user, video) {
+        if (user.status.client) return Promise.reject(errors.NOT_AUTHORIZED())
+        return {'url': video.player_embed_url} 
     }
 
     function getFolderVidsDictionary(data) {
@@ -57,10 +63,6 @@ export default function servicesFunctions(data) {
         } else {
             return format(helperDate, 'm:ss')
         }
-    }
-
-    async function getVideo(videoInfo) {
-        return videoInfo
     }
 
     async function getEnrollmentRequests() {

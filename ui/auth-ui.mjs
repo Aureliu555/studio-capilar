@@ -1,6 +1,7 @@
 import express from 'express'
 import expressSession from 'express-session'
 import passport from 'passport'
+import {convertToHttpError} from '../errors/http-errors.mjs'
 
 function authUiFunction(services, appMiddlewares) {
     const router = express.Router()
@@ -31,8 +32,10 @@ function authUiFunction(services, appMiddlewares) {
             const serializableUser = await services.login(email, password)
             await loginAndRedirect(req, resp, serializableUser)
         } catch (error) {
-            // error mapping needs to be implemented
-            resp.render("login", {loginOrSignup: true, error: error})
+            const httpError = convertToHttpError(error)
+            let err
+            if (httpError.code === 500) err = {message: "Credenciais Inválidas"}; else err = httpError
+            resp.render("login", {loginOrSignup: true, error: err})
         }
     }
 
@@ -46,8 +49,10 @@ function authUiFunction(services, appMiddlewares) {
             const user = await services.signUp(req.body.username, req.body.email, req.body.password)
             await loginAndRedirect(req, resp, user)
         } catch(error) {
-            // error mapping needs to be implemented
-            resp.render('signup', {loginOrSignup: true, error: error})
+            const httpError = convertToHttpError(error)
+            let err
+            if (httpError.code === 500) err = {message: "Ooops: Ocorreu um erro, por favor tente novamente"}; else err = httpError
+            resp.render('signup', {loginOrSignup: true, error: err})
         }
     }
 

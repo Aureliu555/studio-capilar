@@ -83,9 +83,8 @@
     width: 100%;
 }
 
-.mobile-nav .hrefs-mobile-row a {
+.hrefs-mobile-row a, .hrefs-mobile-row form button {
     font-family: "Montserrat", sans-serif;
-    /*font-family: "Brush Script MT", cursive;*/
     color: orange;
     width: 100%;
     text-decoration: none;
@@ -97,7 +96,7 @@
     margin-bottom: 0;
 }
 
-.mobile-nav .hrefs-mobile-row a:hover {
+.hrefs-mobile-row a:hover, .hrefs-mobile-row form button:hover {
     color: white;
     background-color: black;
 }
@@ -135,9 +134,19 @@
     margin-top: 15px;
 }
 
+.hrefs-mobile form {
+    padding: 0px;
+}
 
-.hrefs-desktop {
-    /**font-family: "Brush Script MT", cursive;*/
+.hrefs-mobile form button {
+    text-align: start;
+    background-color: transparent;
+    border: none;
+}
+
+
+/*.hrefs-desktop {
+    font-family: "Brush Script MT", cursive;
     height: 60px;
     margin-top: 25px;
     margin-right: 100px;
@@ -160,6 +169,36 @@
     color: rgb(255, 174, 24);
     margin-top: -10px;
     transition: 0.4s;
+}*/
+
+/**/
+.hrefs-desktop {
+    margin-top: 25px;
+    margin-right: 100px;
+    justify-content: end;
+}
+
+.hrefs-desktop a, .hrefs-desktop form, .defaultButton {
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+.hrefs-desktop a, .hrefs-desktop form {
+    width: fit-content;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    padding-bottom: 5px;
+    transition: border-bottom-color 0.3s ease-in-out;
+}
+    
+.hrefs-desktop a:hover, .hrefs-desktop form:hover {
+    border-bottom-color: orange;
+}
+
+.defaultButton {
+    background-color: transparent;
+    border: none;
 }
 
 @media (max-width: 1024px) {
@@ -193,17 +232,18 @@
     }
 
     .hamburger {
-        margin-top: 40px;
-        width: 120px;
+        margin-top: 80px;
+        width: 100px;
+        height: 75px;
     }
 
     .hamburger .bar, .hamburger::after, .hamburger::before {
-        height: 11px;
-        margin: 11px 0px;
+        height: 10px;
+        margin: 10px 0px;
     }
 
     .hamburger.is-active::after {
-        transform: rotate(45deg) translate(-24px, -22px);
+        transform: rotate(45deg) translate(-22px, -20px);
     }
 
     .hrefs-mobile {

@@ -12,17 +12,24 @@ function invalidCredentials() {
     }
 }
 
-function existentEmail(message) {
+function existentEmail() {
     return {
         desc: "existentEmail",
         message: `O email inserido já está registrado`
     }
 }
 
+function invalidPassword() {
+    return {
+        desc: "invalidPassword",
+        message: `A palavra-passe precisa ter no mínimo 8 caracteres`
+    }
+}
+
 function notAuthorized() {
     return {
         desc: "notAuthorized",
-        error: `You are not authorized to access this resource`
+        message: `You are not authorized to access this resource`
     }
 }
 
@@ -30,7 +37,8 @@ const errors = {
     NON_EXISTENT_EMAIL: nonExistentEmail,
     INVALID_CREDENTIALS: invalidCredentials,
     EXISTENT_EMAIL: existentEmail,
-    NOT_AUTHORIZED: notAuthorized
+    NOT_AUTHORIZED: notAuthorized,
+    INVALID_PASSWORD: invalidPassword
 }
 
 export default errors

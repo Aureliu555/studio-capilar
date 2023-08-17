@@ -10,18 +10,18 @@
                     <div style="width: 100%; height: 100%">
                         <a href="/classes?videoId={{vidId}}">
                             <div class="thumbnail-container">
-                                <img class="thumbnail" src="{{thumbnail_src}}">
+                                <img class="thumbnail" src="{{thumbnail_src}}" loading="lazy">
                                 <div class="duration-container"> 
                                     <span class="video-duration"> {{duration}} </span>
                                 </div>
                             </div>
+                            
                         </a>
                     </div>
                     <div class="video-name">
                         <span >{{name}}</span>
                     </div>
                 </div>
-                    
                 {{/each}}
         </div>
         {{/each}}

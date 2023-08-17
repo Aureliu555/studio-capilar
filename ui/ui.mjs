@@ -1,6 +1,7 @@
-import fetch from 'node-fetch';
+import fetch from 'node-fetch'
 import vimeo from 'vimeo'
 import util from 'util'
+import {convertToHttpError} from '../errors/http-errors.mjs'
 
 let Vimeo = vimeo.Vimeo
 const client = new Vimeo(process.env.CLIENT_ID, process.env.CLIENT_SECRET, "00c6c81958b9c46c279275730bf467b3");
@@ -30,9 +31,10 @@ export default function uiFunctions(services) {
             method: 'GET',
             path: '/me/videos'
         }, async (err, body) => {
-            // handle error
-            const folders = await services.getFolders(body.data)
-            resp.render("classes", {'user': req.user, 'folders': folders})
+            await uiHandler(req, resp, async () => { 
+                const folders = await services.getFolders(req.user, body.data)
+                resp.render("classes", {'user': req.user, 'folders': folders})
+            })
         }) 
     }
     
@@ -41,8 +43,10 @@ export default function uiFunctions(services) {
             method: 'GET',
             path: '/videos/' + req.query.videoId
         }, async (err, body) => {
-            // handle error
-            resp.render("video", {'user': req.user, 'video_url': body.player_embed_url})
+            await uiHandler(req, resp, async () => {
+                const video = await services.getVideo(req.user, body)
+                resp.render("video", {'user': req.user, 'video': video})
+            }) 
         })
     }
 
@@ -51,13 +55,17 @@ export default function uiFunctions(services) {
     }
 
     async function getEnrollmentRequests(req, resp) {
-        const enrollmentRequests = await services.getEnrollmentRequests()
-        resp.render("enrollment-requests", {'user': req.user, 'enrollmentRequests': enrollmentRequests})
+        await uiHandler(req, resp, async () => { 
+            const enrollmentRequests = await services.getEnrollmentRequests()
+            resp.render("enrollment-requests", {'user': req.user, 'enrollmentRequests': enrollmentRequests})
+        })
     }
 
     async function acceptEnrollmentRequest(req, resp) {
-        await services.acceptEnrollmentRequest(req.params.userEmail)
-        resp.redirect('/enrollmentRequests')
+        await uiHandler(req, resp, async () => { 
+            await services.acceptEnrollmentRequest(req.params.userEmail)
+            resp.redirect('/enrollmentRequests')
+        })
     }
 
     async function enroll(req, resp) {
@@ -75,6 +83,16 @@ export default function uiFunctions(services) {
     async function fetchData(url) {
         const res = await fetch(API_BASE_URL + url, {method: "GET", headers: {"Accept" : "application/json"}})
         return await res.json()
+    }
+
+    async function uiHandler(req, resp, block) {
+        try {
+            await block() 
+        } catch (error) {
+            console.log(error)
+            const httpError = convertToHttpError(error)
+            resp.render("error", {'user': req.user, 'error': httpError})
+        }
     }
 
     function checkIfJustCliente(req) {

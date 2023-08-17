@@ -1,0 +1,31 @@
+.course-info {
+    width: 80%;
+    margin-left: 10%;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.course-info h1 {
+    margin-bottom: 20px;
+    color: orange;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.course-info h2 {
+    margin-left: 1%;
+    color: orange;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.course-info p {
+    margin-left: 2%;
+    color: white;
+    font-size: 16px;
+}
+
+.course-info ul {
+    list-style-type: square;
+    margin-left: 5%;
+}

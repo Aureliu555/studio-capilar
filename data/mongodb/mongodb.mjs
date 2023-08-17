@@ -16,7 +16,7 @@ const client = new MongoClient(MONGO_URI, {
 export default function dataFunctions() {
     
     async function login(email, password) {
-        return await mongodbHander(async (db) => {
+        return await mongodbHandler(async (db) => {
             const usersCollection = db.collection("users")
 
             const user = await usersCollection.findOne({'email': email})
@@ -29,7 +29,9 @@ export default function dataFunctions() {
     }
 
     async function signUp(name, email, password) {
-        return await mongodbHander(async (db) => {
+        return await mongodbHandler(async (db) => {
+            if (password.length < 8) return Promise.reject(errors.INVALID_PASSWORD())
+
             const usersCollection = db.collection("users")
             
             const existentEmail = await usersCollection.findOne({'email': email})
@@ -48,14 +50,14 @@ export default function dataFunctions() {
     }
 
     async function getEnrollmentRequests() {
-        return await mongodbHander(async (db) => {
+        return await mongodbHandler(async (db) => {
             const enrollmentRequests = db.collection("enrollment-requests")
             return enrollmentRequests.find().toArray()
         })
     }
 
     async function addEnrollRequest(name, email) {
-        return await mongodbHander(async (db) => {
+        return await mongodbHandler(async (db) => {
             const enrollmentRequests = db.collection("enrollment-requests")
             const existentEmail = await enrollmentRequests.findOne({'email': email})
             if (existentEmail) return Promise.reject(errors.EXISTENT_EMAIL())
@@ -69,17 +71,17 @@ export default function dataFunctions() {
     }
 
     async function acceptEnrollmentRequest(email) {
-        return await mongodbHander(async (db) => {
+        return await mongodbHandler(async (db) => {
             const enrollmentRequests = db.collection("enrollment-requests")
             await enrollmentRequests.deleteOne({'email': email})
 
             const users = db.collection("users")
-            const newUserStatus = { owner: false, client: true, student: true }
+            const newUserStatus = { owner: false, client: false, student: true }
             await users.updateOne({ email: email }, { $set: { status: newUserStatus } })
         })
     }
 
-    async function mongodbHander(action) {
+    async function mongodbHandler(action) {
         try {
             await client.connect();
             const db = client.db("studio-capilar")
