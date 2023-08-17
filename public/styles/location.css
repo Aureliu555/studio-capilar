@@ -1,0 +1,12 @@
+.location-frame {
+    margin-left: 1%;
+    width: 98%;
+    height: 400px;
+}
+
+@media (min-height: 1081px) {
+    .location-frame {
+        margin-left: 5%;
+        width: 90%;
+    }
+}

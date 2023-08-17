@@ -29,12 +29,8 @@
                             <a href="https://www.fresha.com/pt/a/studio-capilar-jhone-barbeiro-alcabideche-rua-cesaltina-fialho-gouveia-199-aghw0q3d/booking?menu=true" > Agendar</a>
                             <a href="/#professionls"> Profissionais</a>
                             <a href="/#location"> Localização</a>
-                            <a href="/#gallery"> Galeria</a>
-                            {{#if user}}
-                                {{#unless user.status.student}} 
-                                    <a href="/course"> Curso </a> 
-                                {{/unless}}
-                            {{/if}}
+                            <a href="/#gallery"> Galeria</a> 
+                            <a href="/course"> Curso </a> 
                             {{#if user.status.student}}
                                 <a href="/classes"> Aulas</a>
                             {{/if}}
@@ -45,9 +41,17 @@
                             {{#if user}}
                                 <!--<a id="logoutRequest" href=""> LogOut</a>-->
                                 <!--<a href="/"> Histórico</a> Link que deve aparecer na página do Agendar-->
-                                <form action="/logout" method="POST"><button class="defaultButton"> LogOut </button> </form>
+                                <form action="/logout" method="POST">
+                                    <button class="defaultButton">
+                                        <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right:7px"></i> LogOut
+                                     </button> 
+                                </form>
                             {{else}}
-                                <a href="/login"> LogIn</a>
+                                <form action="/login" method="GET">
+                                    <button class="defaultButton"> 
+                                        <i class="fa-solid fa-arrow-right-to-bracket" style="margin-right:7px"></i> Log In 
+                                    </button> 
+                                </form>
                             {{/if}}
                         </nav>
                     </div>

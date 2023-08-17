@@ -1,8 +1,9 @@
 .course-info {
-    width: 80%;
-    margin-left: 10%;
+    margin-left: 5%;
+    width: 90%;
     font-family: Arial, sans-serif;
     line-height: 1.5;
+    margin-top: 100px
 }
 
 .course-info h1 {
@@ -28,4 +29,39 @@
 .course-info ul {
     list-style-type: square;
     margin-left: 5%;
+}
+
+.course-button {
+    background-color: orange;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+} 
+  
+.course-button:hover {
+    background-color: black;
+    color: orange;
+}
+
+@media (min-height: 1081px) {
+    .course-info {
+        margin-top: 200px;
+    }
+    
+    .course-info h1 {
+        font-size: 29px;
+    }
+    
+    .course-info h2 {
+        font-size: 24px;
+    }
+    
+    .course-info p, .course-info ul, .course-button {
+        font-size: 22px;
+    }
 }

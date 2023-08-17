@@ -1,3 +1,10 @@
 <link rel="stylesheet" href="styles/error.css">
-<span style="display: block; margin-top:100px">{{error.code}} {{error.description}}</span>
-<span>{{error.message}}</span>
+<div class="col error-container">
+    <div class="row">
+        <p class="error">{{error.code}} {{error.description}}</p>  
+    </div>
+    <div class="row">
+        <p class="message">{{error.message}}</p>
+    </div>
+      
+</div>

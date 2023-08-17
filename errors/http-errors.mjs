@@ -1,7 +1,8 @@
 const ERRORS_MAPPER = {
     notFound: 404,
     notAuthorized: 401,
-    invalidPassword: 400
+    invalidPassword: 400,
+    existentEmail: 400,
 }
 
 const CODE_DESCRIPTION_MAPPER = {

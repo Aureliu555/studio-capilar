@@ -1,4 +1,4 @@
-function checkAuthenticated(req, resp, next) {
+function redirectIfNotAuthenticated(req, resp, next) {
     if (req.isAuthenticated()) {
         return next()
     }
@@ -6,14 +6,16 @@ function checkAuthenticated(req, resp, next) {
     resp.redirect(redirectUrl)
 }
 
-function checkLogin(req, resp, next) {
-    console.log(req.url)
-    return next()
+function checkIfAuthenticated(req, resp, next) {
+    if (req.isAuthenticated()) {
+        return next()
+    }
+    resp.redirect('/signup')
 }
 
 const middlewares = {
-    checkAuthenticated,
-    checkLogin
+    redirectIfNotAuthenticated,
+    checkIfAuthenticated
 }
 
 export default middlewares

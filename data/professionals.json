@@ -19,6 +19,11 @@
             "name": "B. Pássaro",
             "info": "Barbeiro",
             "imgName": "BPassaro.png"
+        },
+        {
+            "name": "Tom Cabelo",
+            "info": "Barbeiro",
+            "imgName": "TomBarbeiro.jpg"
         }
     ]
 }

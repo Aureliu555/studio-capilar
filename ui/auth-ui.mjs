@@ -45,13 +45,11 @@ function authUiFunction(services, appMiddlewares) {
 
     async function postSignUp(req, resp) {
         try {
-            // the user needs to be serializable one
             const user = await services.signUp(req.body.username, req.body.email, req.body.password)
             await loginAndRedirect(req, resp, user)
         } catch(error) {
             const httpError = convertToHttpError(error)
-            let err
-            if (httpError.code === 500) err = {message: "Ooops: Ocorreu um erro, por favor tente novamente"}; else err = httpError
+            const err = getValueByCondition(httpError.code === 500, {message: "Ooops: Ocorreu um erro, por favor tente novamente"}, httpError)
             resp.render('signup', {loginOrSignup: true, error: err})
         }
     }
@@ -79,6 +77,10 @@ function authUiFunction(services, appMiddlewares) {
         let redirectUrl = ''
         if (req.query.redirectUrl) redirectUrl = '?redirectUrl=' + req.query.redirectUrl
         return redirectUrl
+    }
+
+    function getValueByCondition(condition, valueIfTrue, valueIfFalse) {
+        if (condition) return valueIfTrue; else return valueIfFalse
     }
 }
 

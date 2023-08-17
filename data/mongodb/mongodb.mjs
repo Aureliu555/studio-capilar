@@ -58,15 +58,20 @@ export default function dataFunctions() {
 
     async function addEnrollRequest(name, email) {
         return await mongodbHandler(async (db) => {
+            const usersCollection = db.collection("users")
             const enrollmentRequests = db.collection("enrollment-requests")
-            const existentEmail = await enrollmentRequests.findOne({'email': email})
-            if (existentEmail) return Promise.reject(errors.EXISTENT_EMAIL())
-            
-            const user = {
-                name: name,
-                email: email
+            const existentUser = await usersCollection.findOne({'email': email})
+            if (existentUser) {
+                const existentEmail = await enrollmentRequests.findOne({'email': email})
+                if(existentUser.status.student || existentEmail) return Promise.reject(errors.EXISTENT_EMAIL())
+                const user = {
+                    name: name,
+                    email: email
+                }
+                await enrollmentRequests.insertOne(user)
+            } else {
+                return Promise.reject(errors.NOT_AUTHORIZED())
             }
-            await enrollmentRequests.insertOne(user)
         })
     }
 

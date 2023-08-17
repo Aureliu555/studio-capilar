@@ -1,51 +1,51 @@
 <link rel="stylesheet" href="styles/course.css">
 <div class="col">
-    <div class="row course-info" style="margin-left: 5%; width: 90%;">
-        <div class="highlighted" style="margin-top: 100px;">
-    <h1>Descubra a Arte da Barbearia Profissional - Curso Intensivo</h1>
-  </div>
-  
-  <h2>O que você vai aprender:</h2>
-  <ul>
-    <li>Técnicas avançadas de corte de cabelo masculino e estilização de barba.</li>
-    <li>Uso adequado de ferramentas, como tesouras, navalhas e máquinas de corte.</li>
-    <li>Design de barba e estilos modernos, adaptados às preferências do cliente.</li>
-    <li>Tratamentos de spa para cuidados com a pele do rosto.</li>
-    <li>Higiene e esterilização de equipamentos para um ambiente seguro.</li>
-    <li>Atendimento ao cliente e construção de relacionamentos.</li>
-  </ul>
-  
-  <h2>Destaques do curso:</h2>
-  <ul>
-    <li>Instrutores certificados com vasta experiência na indústria da barbearia.</li>
-    <li>Aulas práticas em um ambiente de salão simulado.</li>
-    <li>Turmas reduzidas para garantir atenção individualizada.</li>
-    <li>Material didático abrangente e recursos online para aprendizado contínuo.</li>
-    <li>Certificado reconhecido ao concluir o curso.</li>
-  </ul>
-  
-  <h2>Duração e Formato:</h2>
-  <p>O curso intensivo de barbearia tem duração de 8 semanas, com aulas práticas e teóricas. As aulas são realizadas duas vezes por semana, permitindo flexibilidade para quem tem compromissos diários.</p>
-  
-  <h2>Requisitos de Inscrição:</h2>
-  <ul>
-    <li>Maiores de 18 anos.</li>
-    <li>Paixão por estilo masculino e atendimento ao cliente.</li>
-    <li>Não é necessário experiência prévia em barbearia.</li>
-  </ul>
-  
-  <h2>Próximas Turmas:</h2>
-  <p>As inscrições estão abertas para a próxima turma, que terá início em [data de início]. As vagas são limitadas, portanto, garanta seu lugar o quanto antes.</p>
-  
-  <p>Prepare-se para adentrar um universo de criatividade, confiança e sucesso com o nosso Curso Intensivo de Barbearia. Inscreva-se hoje mesmo e comece sua jornada para se tornar um barbeiro profissional de destaque!</p>
-  
-  <p>Para mais informações e inscrições, entre em contato pelo telefone <span style="color: rgb(239, 175, 56);">(+351) 963 286 570</span>.</p>
+    <div class="row course-info">
+        <div class="highlighted">
+            <h1>Descubra a Arte da Barbearia Profissional - Curso Intensivo</h1>
+        </div>
+        
+        <h2>O que você vai aprender:</h2>
+        <ul>
+            <li>Técnicas avançadas de corte de cabelo masculino e estilização de barba.</li>
+            <li>Uso adequado de ferramentas, como tesouras, navalhas e máquinas de corte.</li>
+            <li>Design de barba e estilos modernos, adaptados às preferências do cliente.</li>
+            <li>Tratamentos de spa para cuidados com a pele do rosto.</li>
+            <li>Higiene e esterilização de equipamentos para um ambiente seguro.</li>
+            <li>Atendimento ao cliente e construção de relacionamentos.</li>
+        </ul>
+        
+        <h2>Destaques do curso:</h2>
+        <ul>
+            <li>Instrutores certificados com vasta experiência na indústria da barbearia.</li>
+            <li>Aulas práticas em um ambiente de salão simulado.</li>
+            <li>Turmas reduzidas para garantir atenção individualizada.</li>
+            <li>Material didático abrangente e recursos online para aprendizado contínuo.</li>
+            <li>Certificado reconhecido ao concluir o curso.</li>
+        </ul>
+        
+        <h2>Duração e Formato:</h2>
+        <p>O curso intensivo de barbearia tem duração de 8 semanas, com aulas práticas e teóricas. As aulas são realizadas duas vezes por semana, permitindo flexibilidade para quem tem compromissos diários.</p>
+        
+        <h2>Requisitos de Inscrição:</h2>
+        <ul>
+            <li>Maiores de 18 anos.</li>
+            <li>Paixão por estilo masculino e atendimento ao cliente.</li>
+            <li>Não é necessário experiência prévia em barbearia.</li>
+        </ul>
+        
+        <h2>Próximas Turmas:</h2>
+        <p>As inscrições estão abertas para a próxima turma, que terá início em [data de início]. As vagas são limitadas, portanto, garanta seu lugar o quanto antes.</p>
+        
+        <p>Prepare-se para adentrar um universo de criatividade, confiança e sucesso com o nosso Curso Intensivo de Barbearia. Inscreva-se hoje mesmo e comece sua jornada para se tornar um barbeiro profissional de destaque!</p>
+        
+        <p>Para mais informações e inscrições, entre em contato pelo telefone <span style="color: rgb(239, 175, 56);">(+351) 963 286 570</span>.</p>
     </div>
     <div class="row" style="width: 100%; margin-top:20px; margin-bottom: 40px">
         <div class="col" style="width: 100%; align-items:center">
             <form action="/course/enroll" method="POST">
                 {{#if justClient}}
-                    <button>Inscrever-me</button>
+                    <button class="course-button">Inscrever-me</button>
                     {{#if message}}
                         <span style="color: green;">{{message}}</span>
                     {{else}}
@@ -57,7 +57,7 @@
             </form>
             {{#if user.status.owner}}
                 <form action="/enrollmentRequests" method="GET">
-                    <button >Pedidos de Inscrição</button>
+                    <button class="course-button">Pedidos de Inscrição</button>
                 </form>
             {{/if}}
         </div>

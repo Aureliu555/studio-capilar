@@ -1,0 +1,85 @@
+.requests-container {
+    margin-top: 120px ;
+}
+
+.request {
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 7px;
+    margin-left: 25%;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.user-info-col {
+    flex: 3;
+}
+
+.user-info-col p {
+    padding: 0;
+    margin: 0;
+}
+
+.form-col {
+    justify-content: center;
+    flex: 1;
+}
+
+.tag-name, .tag-email {
+    font-size: 18px;
+    color: orange;
+}
+
+.tag-name {
+    margin-right: 7px;
+}
+
+.tag-email {
+    margin-right: 10px;
+}
+
+.tag-info {
+    color: white;
+    width: fit-content;
+}
+
+.accept-request-button {
+    width: 100%;
+    background-color: orange;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.accept-request-button:hover {
+    background-color: black;
+    color: orange;
+}
+
+@media (min-height: 1081px) {
+    .requests-container {
+        margin-top: 200px ;
+    }
+    
+    .request {
+        margin-left: 15%;
+        width: 70%;
+    }
+    
+    .form-col {
+        flex: 2;
+    }
+    
+    .tag-name, .tag-email {
+        font-size: 22px;
+    }
+    
+    .tag-info {
+        font-size: 19px;
+    }
+}
+

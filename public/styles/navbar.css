@@ -58,8 +58,8 @@
 }
 
 .mobile-menu-brand-img {
-    width: 400px;
-    height: 100px;
+    width: 480px;
+    height: 120px;
     
 }
 
@@ -88,8 +88,8 @@
     color: orange;
     width: 100%;
     text-decoration: none;
-    font-size: 35px;
-    padding: 15px 45px;
+    font-size: 45px;
+    padding: 15px 60px;
 }
 
 .mobile-nav .hrefs-mobile-row hr {
@@ -123,6 +123,8 @@
 }
 
 .navbar-container {
+    left: 0;
+    top: 0;
     height: 80px; 
     background-color: rgba(0, 0, 0, 0.3);
     position: fixed;
@@ -144,34 +146,6 @@
     border: none;
 }
 
-
-/*.hrefs-desktop {
-    font-family: "Brush Script MT", cursive;
-    height: 60px;
-    margin-top: 25px;
-    margin-right: 100px;
-    justify-content: end;
-}
-
-.hrefs-desktop a {
-    font-family: "Montserrat", sans-serif;
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-    width: fit-content;
-}
-
-.hrefs-desktop form {
-    width: fit-content;
-}
-    
-.hrefs-desktop a:hover, .hrefs-desktop form:hover {
-    color: rgb(255, 174, 24);
-    margin-top: -10px;
-    transition: 0.4s;
-}*/
-
-/**/
 .hrefs-desktop {
     margin-top: 25px;
     margin-right: 100px;

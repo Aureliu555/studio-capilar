@@ -96,8 +96,12 @@ export default function uiFunctions(services) {
     }
 
     function checkIfJustCliente(req) {
-        const status = req.user.status
-        return !status.student && !status.owner 
+        if (req.user) {
+            const status = req.user.status
+            return !status.student && !status.owner  
+        } else {
+            return true
+        }
     }
     
     return {

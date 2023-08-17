@@ -1,20 +1,23 @@
-<link rel="stylesheet" href="styles/authentication.css">
+<link rel="stylesheet" href="styles/enrollment-requests.css">
 
-<div class="col" style="align-items:center; margin-top: 100px">
-    <hr style="color: white; width:100%">
+<div class="col requests-container">
     {{#each enrollmentRequests}}
-        <div class="row" style="width: 100%;">
-            <div class="col">
-                <span>Nome: {{name}}</span>
-                <span>Email: {{email}}</span>
+        <div class="row request">
+            <div class="row user-info-col">
+                <p>
+                    <span class="tag-name">Nome </span> 
+                    <span class="tag-info">{{name}}</span>
+                </p>
+                <p>
+                    <span class="tag-email">Email </span> 
+                    <span class="tag-info"> {{email}}</span> 
+                </p>
             </div>
-            <div class="col">
+            <div class="col form-col">
                 <form action="/enrollmentRequests/accept/{{email}}" method="POST">
-                <button>Aceitar Inscrição</button>  
+                    <button class="accept-request-button">Aceitar Inscrição</button>  
                 </form>
             </div>
         </div>  
-        <hr style="color: white; width:100%">  
     {{/each}}  
-    
 </div>
