@@ -56,7 +56,7 @@ export default function uiFunctions(services) {
 
     async function getEnrollmentRequests(req, resp) {
         await uiHandler(req, resp, async () => { 
-            const enrollmentRequests = await services.getEnrollmentRequests()
+            const enrollmentRequests = await services.getEnrollmentRequests(req.user)
             resp.render("enrollment-requests", {'user': req.user, 'enrollmentRequests': enrollmentRequests})
         })
     }
@@ -69,14 +69,16 @@ export default function uiFunctions(services) {
     }
 
     async function enroll(req, resp) {
-        // try catch needs to be implemented
         try {
             await services.addEnrollRequest(req.user.name, req.user.email)
-            resp.redirect('/course')
-            //resp.render("course", {'user': req.user, message: 'Pedido de inscrição realizado com sucesso', 'justClient': checkIfJustCliente(req)})   
+            resp.render("course", {'user': req.user, message: 'Pedido de inscrição realizado com sucesso'})   
         } catch(error) {
-            resp.redirect('/course')
-            //resp.render("course", {'user': req.user, error: error, 'justClient': checkIfJustCliente(req)})
+            if (error.desc === 'existentEmail') {
+                resp.render("course", {'user': req.user, error: error})
+            } else {
+                const httpError = convertToHttpError(error)
+                resp.render("error", {'user': req.user, 'error': httpError})
+            }
         }
     }
 

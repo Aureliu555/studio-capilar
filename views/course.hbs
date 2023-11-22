@@ -43,18 +43,16 @@
     </div>
     <div class="row" style="width: 100%; margin-top:20px; margin-bottom: 40px">
         <div class="col" style="width: 100%; align-items:center">
-            <form action="/course/enroll" method="POST">
-                {{#if justClient}}
-                    <button class="course-button">Inscrever-me</button>
-                    {{#if message}}
-                        <span style="color: green;">{{message}}</span>
-                    {{else}}
-                        {{#if error}}
-                            <span style="color: red;">{{error.message}}</span>
-                        {{/if}}  
-                    {{/if}}   
-                {{/if}} 
+            <form action="/course" method="POST">
+                <button class="course-button">Inscrever-me</button>
             </form>
+            {{#if message}}
+                <p class="accepted-request">{{message}}</p>
+            {{/if}}
+            {{#if error}}
+                <p class="rejected-request">O seu pedido de inscrição já foi registrado</p>
+            {{/if}}
+
             {{#if user.status.owner}}
                 <form action="/enrollmentRequests" method="GET">
                     <button class="course-button">Pedidos de Inscrição</button>
@@ -64,4 +62,3 @@
          
     </div>
 </div>
-<!--<script async src="//www.instagram.com/embed.js"></script>-->

@@ -65,8 +65,9 @@ export default function servicesFunctions(data) {
         }
     }
 
-    async function getEnrollmentRequests() {
-        return data.getEnrollmentRequests()
+    async function getEnrollmentRequests(user) {
+        if (!user.status.owner) return Promise.reject(errors.NOT_AUTHORIZED())
+        else return await data.getEnrollmentRequests()
     }
 
     async function addEnrollRequest(name, email) {

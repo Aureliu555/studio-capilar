@@ -41,7 +41,7 @@ app.get("/", ui.homePage)
 app.get("/schedules", ui.schedulesPage)
 app.get("/classes", appMiddlewares.redirectIfNotAuthenticated, ui.classes)
 app.get("/course", ui.course)
-app.post("/course/enroll", appMiddlewares.checkIfAuthenticated, ui.enroll)
+app.post("/course", appMiddlewares.checkIfAuthenticated, ui.enroll)
 app.get("/enrollmentRequests", appMiddlewares.redirectIfNotAuthenticated, ui.getEnrollmentRequests)
 app.post("/enrollmentRequests/accept/:userEmail", appMiddlewares.redirectIfNotAuthenticated, ui.acceptEnrollmentRequest)
 

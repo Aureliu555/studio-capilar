@@ -48,6 +48,19 @@
     color: orange;
 }
 
+.rejected-request, .accepted-request {
+    margin: 0;
+    margin-top: 10px;
+}
+
+.rejected-request {
+    color: red;
+}
+
+.accepted-request {
+    color: green;
+}
+
 @media (min-height: 1081px) {
     .course-info {
         margin-top: 200px;

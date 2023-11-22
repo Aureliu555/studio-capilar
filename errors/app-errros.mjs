@@ -29,7 +29,7 @@ function invalidPassword() {
 function notAuthorized() {
     return {
         desc: "notAuthorized",
-        message: `You are not authorized to access this resource`
+        message: `Não está autorizado a aceder este recurso`
     }
 }
 

@@ -14,7 +14,7 @@ const CODE_DESCRIPTION_MAPPER = {
 const DEFAULT_ERROR = {
     code: 500, 
     description: 'SERVER ERROR',
-    message: `An internal error occurred. Contact your system administrator`
+    message: `Oops ... Aconteceu um erro no servidor. Por favor contacte o seu administrador`
 }
 
 export function convertToHttpError(error) {
